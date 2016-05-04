@@ -57,22 +57,15 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <leader>r yiw :%s/<c-r>"//gc<left><left><left>
-"nnoremap <tab> %
-"vnoremap <tab> %
-" autocompletion
-"inoremap {  {}<ESC>i
-"inoremap {<cr>  {}<ESC>i<cr><ESC>O
-"inoremap (  ()<ESC>i
-"inoremap '  ''<ESC>i
-"inoremap [  []<ESC>i
-inoremap ;; <ESC>A;
 nnoremap <F2> :ls<cr>:b
 inoremap <c-h> <left>
 inoremap <c-l> <right>
 inoremap <c-cr> <esc>o
-inoremap <c-s-cr> <esc>A;<cr>
-"nnoremap <F7> :tabp<cr>
-"nnoremap <F8> :tabn<cr>
+
+" JavaScript Related keymap
+autocmd FileType javascript inoremap <buffer> <c-s-cr> <esc>A;<cr>
+autocmd FileType javascript inoremap <buffer> ;; <ESC>A;<ESC>
+
 set ignorecase
 set smartcase
 set tabstop=4
