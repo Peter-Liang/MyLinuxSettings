@@ -172,4 +172,4 @@ silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 let g:CommandTWildIgnore=&wildignore . ",**/bower_components/*,**/node_modules/*,**/__pycache__/*"
 
 " NerdCommenter Settings
-nnoremap <space> <plug>NERDCommenterToggle
+nmap <space> <plug>NERDCommenterToggle
