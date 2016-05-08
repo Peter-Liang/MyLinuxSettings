@@ -65,6 +65,7 @@ inoremap <c-cr> <esc>o
 " JavaScript Related keymap
 autocmd FileType javascript inoremap <buffer> <c-s-cr> <esc>A;<cr>
 autocmd FileType javascript inoremap <buffer> ;; <ESC>A;<ESC>
+autocmd FileType javascript noremap <buffer> <F5> :w<cr> :!node % <cr>
 
 set ignorecase
 set smartcase
@@ -92,6 +93,7 @@ set undofile
 set undodir=$TMPDIR
 set undolevels=1000
 set undoreload=10000
+set nowrap
 "************ Common settings end ************
 
 "************ GUI settings begin ************
@@ -162,8 +164,6 @@ let NERDTreeQuitOnOpen=1
 let NERDTreeShowLineNumbers = 1
 
 
-"JavaScript related key maps
-autocmd FileType javascript noremap <buffer> <F5> !node % 
 
 " vim-repeat
 silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
