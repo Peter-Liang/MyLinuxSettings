@@ -15,8 +15,15 @@ Plugin 'maksimr/vim-jsbeautify'
 Plugin 'einars/js-beautify'
 
 Plugin 'scrooloose/syntastic'
+Plugin 'digitaltoad/vim-pug'
+Plugin 'mxw/vim-jsx'
+Plugin 'pangloss/vim-javascript'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+
+" Html
+Plugin 'alvan/vim-closetag'
+Plugin 'mattn/emmet-vim'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdcommenter'
@@ -24,7 +31,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'wincent/command-t'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'mattn/emmet-vim'
 Plugin 'Chiel92/vim-autoformat'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
@@ -67,6 +73,9 @@ autocmd FileType javascript inoremap <buffer> <c-s-cr> <esc>A;<cr>
 autocmd FileType javascript inoremap <buffer> ;; <ESC>A;<ESC>
 autocmd FileType javascript noremap <buffer> <F5> :w<cr> :!node % <cr>
 
+" auto save file
+autocmd BufLeave,FocusLost * silent! wall
+
 set ignorecase
 set smartcase
 set tabstop=4
@@ -99,7 +108,10 @@ set nowrap
 "************ GUI settings begin ************
 hi LineNr guifg=DarkRed
 hi LineNr ctermfg=DarkRed
-set guifont=PT_Mono:h18
+set guifont=PT_Mono:h16
+"if has("gui_running")
+    "set fu
+"endif
 "************ GUI settings end ************
 
 "************ Caplock settings begin ************
@@ -123,6 +135,7 @@ augroup JsBeautify
     autocmd FileType json noremap <buffer> <bs> :call JsonBeautify()<cr>
     " for jsx 
     autocmd FileType jsx noremap <buffer> <bs> :call JsxBeautify()<cr>
+    autocmd FileType javascript.jsx noremap <buffer> <bs> :call JsxBeautify()<cr>
     " for html
     autocmd FileType html noremap <buffer> <bs> :call HtmlBeautify()<cr>
     " for css or scss
@@ -140,6 +153,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_jade_checkers = ['jade_lint']
 
 " ultisnips configuration
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -173,3 +187,9 @@ let g:CommandTWildIgnore=&wildignore . ",**/bower_components/*,**/node_modules/*
 
 " NerdCommenter Settings
 nmap <space> <plug>NERDCommenterToggle
+
+" vim-jsx
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
+" vim-closetag
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.jsx"
